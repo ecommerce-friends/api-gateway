@@ -1,0 +1,10 @@
+zuul:
+  routes:
+
+    product-category:
+      path: /product-category/**
+      url: http://localhost:3000/e-commerce/product-category
+
+    product:
+      path: /product/**
+      url: http://localhost:3000/e-commerce/product
