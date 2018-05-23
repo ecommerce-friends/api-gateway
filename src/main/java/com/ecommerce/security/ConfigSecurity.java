@@ -14,7 +14,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 		http
 			.antMatcher("/**")
 			.authorizeRequests()
-				.antMatchers("/", "/login**").permitAll()
+				.antMatchers("/", "/login/**").permitAll()
 			.anyRequest()
 				.authenticated()
 			.and()

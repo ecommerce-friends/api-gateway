@@ -18,7 +18,7 @@ import org.springframework.web.filter.CompositeFilter;
 
 public class SSOFilter {
 
-    @Autowired
+    /*@Autowired
     OAuth2ClientContext oauth2ClientContext;
 
     private Filter sso() {
@@ -51,5 +51,5 @@ public class SSOFilter {
     @ConfigurationProperties("google.resource")
     private ResourceServerProperties googleResource() {
         return new ResourceServerProperties();
-    }
+    }*/
 }
