@@ -16,8 +16,12 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.gmail.GmailScopes;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
+@EnableAuthorizationServer
+@Configuration
 public class GmailController {
 
     private static HttpTransport httpTransport;
@@ -33,13 +39,13 @@ public class GmailController {
     GoogleAuthorizationCodeFlow googleAuthorizationCodeFlow;
     GoogleClientSecrets googleClientSecrets;
 
-    @Value("${security.oauth2.client.clientId}")
+    @Value("${security.oauth2.client.client-id}")
     private String clientId;
 
-    @Value("${security.oauth2.client.clientSecret}")
+    @Value("${security.oauth2.client.client-secret}")
     private String clientSecret;
 
-    @Value("${security.oauth2.client.redirectUri}")
+    @Value("${security.oauth2.client.redirect-uri}")
     private String redirectUri;
     
     @RequestMapping(value = "/login/gmail", method = RequestMethod.GET)
